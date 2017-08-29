@@ -1,0 +1,20 @@
+<h1>
+  Comment: <br>
+  <%= @comment.content %>
+  <div class="small">
+    By: <%= link_to @comment.author.username, user_url(@comment.author) %>
+  </div>
+</h1>
+
+<%= render @comment.child_comments %>
+
+<br>
+
+<form action="<%= post_comments_url(@comment.post) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+  <input type="text" name="comment[content]" placeholder="Add a comment...">
+  <input type="submit" value="Add Comment">
+</form>
+
+<%= link_to 'Back', post_url(@comment.post) %>
