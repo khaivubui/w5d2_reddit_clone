@@ -15,3 +15,7 @@ input[type=submit]:hover {
 form.button_to {
   display: inline-block;
 }
+
+.small form.button_to {
+  font-size: 0.7em;
+}

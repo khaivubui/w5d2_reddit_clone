@@ -10,4 +10,9 @@ class CommentsController < ApplicationController
     end
     redirect_to post_url(@comment.post)
   end
+
+  def destroy
+    @comment = Comment.find(params[:id]).delete
+    redirect_to post_url(@comment.post)
+  end
 end

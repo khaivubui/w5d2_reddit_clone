@@ -28,6 +28,17 @@ Subs: <br>
   "<%= comment.content %>"<br>
   by <%= link_to comment.author.username, user_url(comment.author) %>
   <br>
+  <% if current_user == comment.author %>
+  <div class="small">
+    <%= button_to 'Delete Comment',
+                  comment_url(comment),
+                  method: :delete,
+                  data: {
+                    confirm: 'Are you sure?'
+                    } %>
+  </div>
+  <br>
+  <% end %>
 <% end %>
 <form action="<%= post_comments_url(@post) %>" method="post">
   <%= auth_token %>
