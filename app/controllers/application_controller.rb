@@ -21,4 +21,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= session[:session_token] &&
         User.find_by(session_token: session[:session_token])
   end
+
+  def flash_store(model_obj)
+    flash[:errors] = model_obj.errors.full_messages
+  end
+
+  def flash_now_store(model_obj)
+    flash.now[:errors] = model_obj.errors.full_messages
+  end
 end
