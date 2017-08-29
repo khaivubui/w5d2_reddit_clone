@@ -3,9 +3,14 @@ input[type=submit] {
   background: #2c3e50;
   border: 0;
   padding: 5px;
-  margin: 2px 0;
+  margin: 5px 0;
+  transition: background-color 0.3s;
 }
 
 input[type=submit]:hover {
-  background: #34495e;
+  background: #5e82a6;
+}
+
+form.button_to {
+  display: inline-block;
 }

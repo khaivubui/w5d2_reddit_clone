@@ -1,0 +1,23 @@
+header a {
+  color: #5e82a6;
+  font-weight: 700;
+  font-size: 2em;
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #CCC;
+  padding-bottom: 15px;
+  margin-bottom: 15px;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav input[type=submit] {
+  margin-left: 20px;
+}

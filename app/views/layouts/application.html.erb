@@ -9,17 +9,27 @@
   </head>
 
   <body>
-    <% if current_user %>
-      <%= "Welcome, #{current_user.username}" %>
-      <%= button_to 'Sign Out', session_url, method: :delete %>
-    <% else %>
-      <%= button_to 'Sign Up', new_user_url, method: :get %>
-      <%= button_to 'Sign In', new_session_url, method: :get %>
-    <% end %>
+    <main>
+      <nav>
+        <header>
+          <%= link_to 'Bluit', '/' %>
+        </header>
+        <div class="nav">
+          <% if current_user %>
+          <%= "Welcome, " %>
+          <%= link_to current_user.username, user_url(current_user) %>
+          <%= button_to 'Sign Out', session_url, method: :delete %>
+          <% else %>
+          <%= button_to 'Sign Up', new_user_url, method: :get %>
+          <%= button_to 'Sign In', new_session_url, method: :get %>
+          <% end %>
+        </div>
+      </nav>
 
-    <% flash[:errors].try(:each) do |error_msg| %>
-      <%= error_msg %>
-    <% end %>
-    <%= yield %>
+      <% flash[:errors].try(:each) do |error_msg| %>
+      <%= error_msg %><br>
+      <% end %>
+      <%= yield %>
+    </main>
   </body>
 </html>

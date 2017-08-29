@@ -1,0 +1,14 @@
+<h1>
+  Sub: <%= @sub.title %>
+</h1>
+
+<form action="<%= sub_url(@sub) %>" method="post">
+  <%= auth_token %>
+  <input type="hidden" name="_method" value="PATCH">
+  <label>Sub Title: <input type="text" name="sub[title]" value="<%= @sub.title %>"></label><br>
+  <label>Descrition: <textarea name="sub[description]"><%= @sub.description %></textarea></label><br>
+  By: <%= @sub.moderator.username %><br>
+  <input type="submit" value="Update Sub">
+</form>
+
+<%= button_to 'Cancel', sub_url(@sub), method: :get %>

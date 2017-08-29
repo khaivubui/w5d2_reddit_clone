@@ -1,0 +1,36 @@
+<h1>
+  Post: <%= @post.title %>
+</h1>
+
+<strong>URL:</strong> <%= @post.url && (link_to @post.url, @post.url) || "(None)" %><br>
+<strong>Content:</strong> <%= @post.content || "(None)" %><br>
+<strong>Author:</strong> <%= link_to @post.author.username, user_url(@post.author) %><br>
+<br>
+Subs: <br>
+<% @post.subs.each do |sub| %>
+  <%= link_to sub.title, sub_url(sub) %><br>
+<% end %>
+<br>
+<% if current_user == @post.author %>
+  <%= (button_to 'Edit Post', edit_post_url(@post), method: :get) %>
+  <%= button_to 'Delete Post',
+                post_url(@post),
+                method: :delete,
+                data: {
+                  confirm: 'Are you sure?'
+                  }%>
+<% end %>
+<br>
+<br>
+<strong>Comments:</strong>
+<% @post.comments.each do |comment| %>
+  <br>
+  "<%= comment.content %>"<br>
+  by <%= link_to comment.author.username, user_url(comment.author) %>
+  <br>
+<% end %>
+<form action="<%= post_comments_url(@post) %>" method="post">
+  <%= auth_token %>
+  <input type="text" name="comment[content]" placeholder="Add a comment..."><br>
+  <input type="submit" value="Add Comment">
+</form>

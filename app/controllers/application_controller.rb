@@ -29,4 +29,11 @@ class ApplicationController < ActionController::Base
   def flash_now_store(model_obj)
     flash.now[:errors] = model_obj.errors.full_messages
   end
+
+  def ensure_logged_in
+    unless current_user
+      flash[:errors] = ["Must be logged in to do that"]
+      redirect_to request.referrer
+    end
+  end
 end

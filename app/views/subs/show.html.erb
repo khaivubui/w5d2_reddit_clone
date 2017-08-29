@@ -1,0 +1,23 @@
+<h1>
+  Sub: <%= @sub.title %>
+</h1>
+
+Description: <%= @sub.description %><br>
+By: <%= link_to @sub.moderator.username, user_url(@sub.moderator) %>
+<% if current_user == @sub.moderator %>
+  <%= button_to 'Edit Sub', edit_sub_url(@sub), method: :get %>
+  <%= button_to 'Delete Sub',
+                sub_url(@sub),
+                method: :delete,
+                data: {
+                  confirm: 'Are you sure?'
+                  } %>
+<% end %>
+<br>
+<br>
+Posts:
+<br>
+<% @sub.posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %>
+  <br>
+<% end %>

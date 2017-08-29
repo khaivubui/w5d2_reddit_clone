@@ -17,6 +17,16 @@ class User < ApplicationRecord
   validates :username, :password_digest, uniqueness: true
   after_initialize :ensure_session_token
 
+  has_many :subs,
+           foreign_key: :moderator_id,
+           inverse_of: :moderator,
+           dependent: :destroy
+
+  has_many :posts,
+           foreign_key: :author_id,
+           inverse_of: :author,
+           dependent: :destroy
+
   def self.generate_unique_token
     new_token = SecureRandom.urlsafe_base64
     while User.find_by(session_token: new_token)

@@ -1,0 +1,13 @@
+<h1>
+  User: <%= @user.username %>
+</h1>
+Subs: <br>
+<% @subs.each do |sub| %>
+  <%= link_to sub.title, sub_url(sub) %><br>
+<% end %>
+<br>
+<br>
+Posts: <br>
+<% @posts.each do |post| %>
+  <%= link_to post.title, post_url(post) %>
+<% end %>
