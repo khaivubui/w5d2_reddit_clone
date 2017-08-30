@@ -24,7 +24,9 @@ Subs: <br>
 <br>
 <strong>Comments:</strong>
 
-<%= render @post.comments.where(parent_comment_id: nil) %>
+<ul>
+  <%= render @post.comments.where(parent_comment_id: nil) %>
+</ul>
 
 <form action="<%= post_comments_url(@post) %>" method="post">
   <%= auth_token %>

@@ -1,17 +1,22 @@
-<br>
-"<%= comment.content %>"<br>
-by <%= link_to comment.author.username, user_url(comment.author) %>
-<br>
-<%= link_to 'View comment thread', comment_url(comment) %>
-<br>
-<% if current_user == comment.author %>
-<div class="small">
-  <%= button_to 'Delete Comment',
-                comment_url(comment),
-                method: :delete,
-                data: {
-                  confirm: 'Are you sure?'
-                  } %>
-</div>
-<br>
-<% end %>
+<li>
+  <br>
+  "<%= comment.content %>"<br>
+  by <%= link_to comment.author.username, user_url(comment.author) %>
+  <br>
+  <%= link_to 'View comment thread', comment_url(comment) %>
+  <br>
+  <% if current_user == comment.author %>
+  <div class="small">
+    <%= button_to 'Delete Comment',
+                  comment_url(comment),
+                  method: :delete,
+                  data: {
+                    confirm: 'Are you sure?'
+                    } %>
+  </div>
+  <br>
+  <% end %>
+  <ul>
+    <%= render comment.child_comments %>
+  </ul>
+</li>
