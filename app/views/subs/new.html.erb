@@ -3,7 +3,7 @@
 <form action="<%= subs_url %>" method="post">
   <%= auth_token %>
   <label>Sub Title: <input type="text" name="sub[title]" value="<%= @sub.title %>"></label><br>
-  <label>Descrition: <textarea name="sub[description]"><%= @sub.description %></textarea></label><br>
+  <label>Descrition: <input type="text" name="sub[description]" value="<%= @sub.description %>"></label><br>
   By: <%= @sub.moderator.username %><br>
   <input type="submit" value="Create New Sub">
 </form>
