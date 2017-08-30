@@ -13,8 +13,8 @@
 <form action="<%= post_comments_url(@comment.post) %>" method="post">
   <%= auth_token %>
   <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
-  <input type="text" name="comment[content]" placeholder="Add a comment...">
-  <input type="submit" value="Add Comment">
+  <input type="text" name="comment[content]" placeholder="Add a reply...">
+  <input type="submit" value="Add Reply">
 </form>
 
 <%= link_to 'Back', post_url(@comment.post) %>
