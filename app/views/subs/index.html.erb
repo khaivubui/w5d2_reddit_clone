@@ -1,9 +1,11 @@
 <h1>All Subs</h1>
 
 <% @subs.each do |sub| %>
-  Title: <%= link_to sub.title, sub_url(sub) %><br>
-  By: <%= link_to sub.moderator.username, user_url(sub.moderator) %><br>
-  <br>
+  <strong>
+    Title: <%= link_to sub.title, sub_url(sub) %><br>
+    By: <%= link_to sub.moderator.username, user_url(sub.moderator) %><br>
+    <br>
+  </strong>
 <% end %>
 
 <%= button_to 'New Sub', new_sub_url, method: :get %>
